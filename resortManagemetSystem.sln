@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "resortManagemetSystem.Application", "resortManagemetSystem.Application\resortManagemetSystem.Application.csproj", "{3E0BD2BD-A548-4486-9CC1-FCCF551A6CA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "resortManagemetSystem.Application", "resortManagemetSystem.Application\resortManagemetSystem.Application.csproj", "{3E0BD2BD-A548-4486-9CC1-FCCF551A6CA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "resortManagemetSystem.Domain", "resortManagemetSystem.Domain\resortManagemetSystem.Domain.csproj", "{D4E174E4-02AC-4CC6-A4CB-53ACB543C4E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "resortManagemetSystem.Domain", "resortManagemetSystem.Domain\resortManagemetSystem.Domain.csproj", "{D4E174E4-02AC-4CC6-A4CB-53ACB543C4E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "resortManagemetSystem.Infrastructure", "resortManagemetSystem.Infrastructure\resortManagemetSystem.Infrastructure.csproj", "{3823FD99-70D9-4502-9DA4-0C003A8A57A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "resortManagemetSystem.Web", "resortManagemetSystem.Web\resortManagemetSystem.Web.csproj", "{31ADB636-DF69-4334-90DE-6F70594570D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "resortManagemetSystem.Web", "resortManagemetSystem.Web\resortManagemetSystem.Web.csproj", "{31ADB636-DF69-4334-90DE-6F70594570D1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "resortManagemetSystem.Infrastrcture", "resortManagemetSystem.Infrastrcture\resortManagemetSystem.Infrastrcture.csproj", "{91858C22-8AFF-4568-BF9D-4F270A51D3B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +25,14 @@ Global
 		{D4E174E4-02AC-4CC6-A4CB-53ACB543C4E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4E174E4-02AC-4CC6-A4CB-53ACB543C4E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4E174E4-02AC-4CC6-A4CB-53ACB543C4E0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3823FD99-70D9-4502-9DA4-0C003A8A57A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3823FD99-70D9-4502-9DA4-0C003A8A57A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3823FD99-70D9-4502-9DA4-0C003A8A57A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3823FD99-70D9-4502-9DA4-0C003A8A57A9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{31ADB636-DF69-4334-90DE-6F70594570D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{31ADB636-DF69-4334-90DE-6F70594570D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31ADB636-DF69-4334-90DE-6F70594570D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31ADB636-DF69-4334-90DE-6F70594570D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91858C22-8AFF-4568-BF9D-4F270A51D3B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91858C22-8AFF-4568-BF9D-4F270A51D3B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91858C22-8AFF-4568-BF9D-4F270A51D3B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91858C22-8AFF-4568-BF9D-4F270A51D3B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,67 @@
+﻿@model HomeVM
+<div id="VillasList" class="container mt-4">
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        @foreach (var villa in Model.VillaList)
+        {
+            <div class="col">
+                <div class="card border-0 rounded-3 shadow futuristic-card" style="background-color: #1a222b">
+                    <img src="@villa.ImageUrl" class="card-img-top rounded-top" alt="@villa.Name">
+                    <div class="card-body text-white">
+                        <h5 class="card-title newFont">@villa.Name</h5>
+                        <p class="card-text pfont">@Html.Raw(villa.Description)</p>
+                        <ul class="list-unstyled text-white">
+                            <li>Max Occupancy: <span class="emphasis">@villa.Occupancy adults</span> </li>
+                            <li>Villa Size: <span class="emphasis">@villa.Sqft sqft</span> </li>
+                        </ul>
+
+                    </div>
+                    <div class="card-footer bg-gradient  inside border-top-0 d-flex justify-content-between align-items-center">
+                        <div>
+                            <p class="card-text font-weight-bold plainFont fs-5 futuristic-price" style="color: white">ZAR @villa.Price.ToString("C") </p>
+                        </div>
+                        <div>
+                            @if (Model.CheckInDate > DateOnly.FromDateTime(DateTime.Now))
+                            {
+                                if (villa.IsAvailable)
+                                {
+                                    <a asp-controller="Booking" asp-action="FinalizeBooking" asp-route-villaId="@villa.Id"
+                                       asp-route-checkInDate="@Model.CheckInDate" asp-route-nights="@Model.Nights"
+                                       class="btn btn-outline-light newinside futuristic-btn">Book Now</a>
+                                }
+                                else
+                                {
+                                    <button class="btn btn-outline-light disabled futuristic-btn">Sold Out</button>
+                                }
+                            }
+                            <button type="button" class="btn  inside futuristic-details-btn" data-bs-toggle="modal" data-bs-target="#exampleModal-@(villa.Id)" style="background-color: #1a222b;">
+                                <i class="bi bi-info-circle"></i> Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal for Villa Details -->
+            <div class="modal fade" id="exampleModal-@(villa.Id)" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header   text-white" style="background-color: #12161d">
+                            <h5 class="modal-title newFont" id="exampleModalLabel">@villa.Name Details</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" style="background-color: #1a222b">
+                            <partial name="_VillaDetail" model="@villa" />
+                        </div>
+                        <div class="modal-footer " style="background-color: #12161d">
+                            <button asp-controller="Home" asp-action="GeneratePPTExport"
+                                    asp-route-id="@villa.Id" type="button" class="btn inside futuristic-btn">
+                                <i class="bi bi-file-earmark-ppt"></i> Download Villa PPT
+                            </button>
+                            <button type="button" class="btn btn-light newinside futuristic-btn" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,7 +1,16 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using resortManagemetSystem.Application.Common.Interfaces;
+using resortManagemetSystem.Application.Contract;
+using resortManagemetSystem.Application.Services.Implementation;
+using resortManagemetSystem.Application.Services.Interfaces;
 using resortManagemetSystem.Domain.Entities;
 using resortManagemetSystem.Infrastrcture.Data;
+using resortManagemetSystem.Infrastrcture.Emails;
+using resortManagemetSystem.Infrastructure.Repository;
+using Stripe;
+using Syncfusion.Licensing;
+using WhiteLagoon.Application.Services.Implementation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,8 +33,22 @@ builder.Services.Configure<IdentityOptions>(option =>
     option.Password.RequiredLength = 6;
 });
 
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IDashboardService, DashboardService>();
+builder.Services.AddScoped<IDbInitializer, DbInitializer>();
+
+builder.Services.AddScoped<IVillaService, VillaService>();
+builder.Services.AddScoped<IVillaNumberService, VillaNumberService>();
+builder.Services.AddScoped<IAmenityService, AmenityService>();
+builder.Services.AddScoped<IBookingService, BookingService>();
+builder.Services.AddScoped<IPaymentService, PaymentService>();
+builder.Services.AddScoped<IEmailService, EmailService>();
 
 var app = builder.Build();
+
+StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
+
+SyncfusionLicenseProvider.RegisterLicense(builder.Configuration.GetSection("Syncfusion:Licensekey").Get<string>());
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -41,9 +64,17 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-
+SeedDatabase();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+void SeedDatabase()
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        var dbInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
+        dbInitializer.Initialize();
+    }
+}

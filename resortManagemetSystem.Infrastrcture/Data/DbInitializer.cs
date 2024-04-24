@@ -43,15 +43,15 @@ namespace resortManagemetSystem.Infrastrcture.Data
                     _roleManager.CreateAsync(new IdentityRole(SD.Role_Customer)).Wait();
                     _userManager.CreateAsync(new ApplicationUser
                     {
-                        UserName = "admin@dotnetmastery.com",
-                        Email = "admin@dotnetmastery.com",
-                        Name = "Bhrugen Patel",
-                        NormalizedUserName = "ADMIN@DOTNETMASTERY.COM",
-                        NormalizedEmail = "ADMIN@DOTNETMASTERY.COM",
-                        PhoneNumber = "1112223333",
+                        UserName = "admin@gmail.com",
+                        Email = "admin@gmail.com",
+                        Name = "mthunzi gcwensa",
+                        NormalizedUserName = "ADMIN@GMAIL.COM",
+                        NormalizedEmail = "ADMIN@GMAIL.COM",
+                        PhoneNumber = "0835601947",
                     }, "Admin123*").GetAwaiter().GetResult();
 
-                    ApplicationUser user = _db.ApplicationUsers.FirstOrDefault(u => u.Email == "admin@dotnetmastery.com");
+                    ApplicationUser user = _db.ApplicationUsers.FirstOrDefault(u => u.Email == "admin@gmail.com");
                     _userManager.AddToRoleAsync(user, SD.Role_Admin).GetAwaiter().GetResult();
                 }
             }
